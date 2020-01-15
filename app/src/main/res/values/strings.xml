@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Tech Challenge LalaMove</string>
+    <string name="my_deliveries">My Deliveries</string>
+    <string name="delivery_detail">Delivery Detail</string>
+    <string name="retry">Retry</string>
+    <string name="delivery_error">An error occurred while loading the posts</string>
+
+    <string name="error_no_data">No data returned from server. Please try again</string>
+    <string name="error_network">Error fetching data. %1$s</string>
+    <string name="error_unknown">Unknown error. %1$s</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="delivery_fee">Delivery Fee</string>
+    <string name="add_to_favorite">Add to Favorite</string>
+</resources>
