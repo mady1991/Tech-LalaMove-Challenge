@@ -3,11 +3,7 @@ package com.example.techchallengelalamove.domain.deliveryDetail
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.techchallengelalamove.data.AppExecutors
-import com.example.techchallengelalamove.data.database.DeliveryDao
 import com.example.techchallengelalamove.data.database.entity.DeliveryItem
-import com.example.techchallengelalamove.data.repository.DeliveryDetailRepositoryImpl
-import com.example.techchallengelalamove.data.repository.LocalData
 import com.example.techchallengelalamove.domain.deliveryDetail.utils.TestDataGenerator
 import org.junit.Before
 import org.junit.Rule

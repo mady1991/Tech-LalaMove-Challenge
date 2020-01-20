@@ -3,14 +3,14 @@ package com.example.techchallengelalamove.data.database
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.example.techchallengelalamove.data.AppExecutors
 import com.example.techchallengelalamove.data.database.entity.DeliveryItem
 import com.example.techchallengelalamove.data.repository.LocalData
 import com.example.techchallengelalamove.domain.vo.BoundaryState
+import io.reactivex.Completable
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class LocalDataImpl @Inject constructor(
-    private val appExecutors: AppExecutors,
     private val deliveryDao: DeliveryDao
 ) : LocalData {
     private val boundaryCallback = DeliveryBoundaryCallback()
@@ -29,9 +29,10 @@ class LocalDataImpl @Inject constructor(
     }
 
     override fun insertDeliveries(deliveryList: List<DeliveryItem>) {
-        appExecutors.diskIO().execute({
-            deliveryDao.insertAll(deliveryList)
-        })
+        Completable
+            .complete()
+            .subscribeOn(Schedulers.io())
+            .subscribe { deliveryDao.insertAll(deliveryList) }
     }
 
     override fun refresh() {
@@ -43,9 +44,12 @@ class LocalDataImpl @Inject constructor(
     }
 
     override fun updateDelivery(status: Boolean, id: String) {
-        appExecutors.diskIO().execute({
-            deliveryDao.update(status, id)
-        })
+        Completable
+            .complete()
+            .subscribeOn(Schedulers.io())
+            .subscribe { deliveryDao.update(status, id) }
+
+
     }
 
 }
