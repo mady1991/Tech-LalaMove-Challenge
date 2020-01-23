@@ -1,8 +1,11 @@
 package com.example.techchallengelalamove.di.module
 
+import android.app.Application
+import com.example.techchallengelalamove.BuildConfig
 import com.example.techchallengelalamove.data.network.DeliveryService
 import com.example.techchallengelalamove.data.network.ItemTypeAdapterFactory
 import com.example.techchallengelalamove.di.scope.ApplicationScope
+import com.example.techchallengelalamove.utils.NetworkUtil
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -20,12 +23,18 @@ class RetrofitModule {
     fun provideDeliveryService(retrofit: Retrofit): DeliveryService =
         retrofit.create(DeliveryService::class.java)
 
+    @ApplicationScope
+    @Provides
+    fun provideNetworkUtil(application: Application): NetworkUtil {
+        return NetworkUtil(application)
+    }
+
     @Provides
     @ApplicationScope
     fun provideRetrofit(httpClient: OkHttpClient, gson: Gson): Retrofit =
 
         Retrofit.Builder()
-            .baseUrl(DeliveryService.ENDPOINT)
+            .baseUrl(BuildConfig.BASE_URL)
             .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()

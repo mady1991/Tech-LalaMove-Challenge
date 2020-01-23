@@ -13,15 +13,5 @@ class DeliveryApp : Application() {
             .build()
     }
 
-    override fun onCreate() {
-        super.onCreate()
-        instance = this
-    }
-
-    companion object {
-        lateinit var instance: DeliveryApp
-            private set
-    }
-
     fun getApplicationComponent(): ApplicationComponent = appComponent
 }

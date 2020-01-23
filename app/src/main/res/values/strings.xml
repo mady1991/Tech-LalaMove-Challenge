@@ -8,8 +8,16 @@
     <string name="error_no_data">No data returned from server. Please try again</string>
     <string name="error_network">Error fetching data. %1$s</string>
     <string name="error_unknown">Unknown error. %1$s</string>
+    <string name="page_load_completed">No item to load</string>
     <string name="from">From</string>
     <string name="to">To</string>
     <string name="delivery_fee">Delivery Fee</string>
     <string name="add_to_favorite">Add to Favorite</string>
+    <string name="content_description_item_imageview">showing delivery image</string>
+    <string name="content_description_detail_imageview">showing detail delivery image</string>
+    <string name="content_description_item_favourite_imageview">showing favourite status</string>
+    <string name="content_description_detail_favourite_imageview">enable favourite status</string>
+    <string name="from_text">From:</string>
+    <string name="item_to_text">To:&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="no_internet_connection">No Internet connection</string>
 </resources>

@@ -25,20 +25,16 @@ class RemoteDataImpl @Inject constructor(private val deliveryService: DeliverySe
                 call: Call<List<DeliveryItem>?>?,
                 response: Response<List<DeliveryItem>?>?
             ) {
-                if (response != null) {
-                    if (response.body()?.size == 0) {
-                        onStatus(
-                            LoadingStatus.error(
-                                ErrorCode.NO_DATA
-                            )
-                        )
-                    } else {
-                        response.body()?.let {
-                            onSuccess(it)
-                            Log.d("fetchMore saved: %s", offset.toString())
-                        }
-                        onStatus(LoadingStatus.success())
+
+                if (response == null || response != null && response.body()?.size == 0) {
+                    onStatus(LoadingStatus.error(ErrorCode.NO_DATA))
+                } else if (response != null) {
+                    response.body()?.let {
+                        onSuccess(it)
+                        Log.d("fetchMore saved: %s", offset.toString())
                     }
+                    onStatus(LoadingStatus.success())
+
                 }
             }
 

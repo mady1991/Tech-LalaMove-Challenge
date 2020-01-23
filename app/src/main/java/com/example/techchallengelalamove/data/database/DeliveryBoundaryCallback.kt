@@ -13,10 +13,6 @@ class DeliveryBoundaryCallback : PagedList.BoundaryCallback<DeliveryItem>() {
     val boundaryState: LiveData<BoundaryState<Int>>
         get() = _boundaryState
 
-    companion object {
-        const val DATABASE_PAGE_SIZE = 20
-    }
-
     override fun onZeroItemsLoaded() {
         print("onZeroItemsLoaded")
         _boundaryState.value = BoundaryState.zeroItemsLoaded(0)
@@ -24,13 +20,18 @@ class DeliveryBoundaryCallback : PagedList.BoundaryCallback<DeliveryItem>() {
 
     @SuppressLint("LongLogTag")
     override fun onItemAtEndLoaded(itemAtEnd: DeliveryItem) {
-        Log.i("onItemAtEndLoaded %d %s %s", itemAtEnd.id)
         _boundaryState.value = BoundaryState.itemLoadedAtBottom(itemAtEnd.deliveryNo)
+
     }
 
     fun refresh() {
         print("refresh")
         _boundaryState.value = BoundaryState.zeroItemsLoaded(0)
+    }
+
+    fun retry(lastValue: Int) {
+        print("retry")
+        _boundaryState.value = BoundaryState.itemLoadedAtBottom(lastValue)
     }
 
 

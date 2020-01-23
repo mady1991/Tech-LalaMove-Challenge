@@ -3,11 +3,12 @@ package com.example.techchallengelalamove.domain.vo
 enum class Status {
     SUCCESS,
     ERROR,
-    LOADING
+    LOADING,
 }
 
 enum class ErrorCode {
     NO_DATA,
+    NO_INTERNET,
     NETWORK_ERROR,
     UNKNOWN_ERROR
 }

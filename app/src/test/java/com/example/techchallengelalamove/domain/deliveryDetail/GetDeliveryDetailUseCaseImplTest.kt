@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.techchallengelalamove.data.database.entity.DeliveryItem
 import com.example.techchallengelalamove.domain.deliveryDetail.usecases.GetDetailUseCase
 import com.example.techchallengelalamove.domain.deliveryDetail.utils.TestDataGenerator
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -17,7 +18,7 @@ import org.mockito.MockitoAnnotations
 
 
 @RunWith(JUnit4::class)
-class DeliveryDetailUseCaseImplTest {
+class GetDeliveryDetailUseCaseImplTest {
 
     private lateinit var deliveryDetailUseCaseImpl: GetDetailUseCaseImpl
 
@@ -47,16 +48,22 @@ class DeliveryDetailUseCaseImplTest {
     fun getDeliverySuccess() {
         val delivery = TestDataGenerator.getDeliveryList()[1]
         deliveryItem.value = delivery
-        val id = delivery.id
 
-        Mockito.`when`(useCase.getDelivery(id))
+        Mockito.`when`(useCase.getDelivery(delivery.id))
             .thenReturn(getDeliveryItem())
 
-        assert(deliveryItem.value != null)
+        assert(deliveryItem.value?.deliveryFee != null)
     }
 
     @Test
-    fun updateDelivery() {
+    fun getDeliveryError() {
+        val delivery = TestDataGenerator.getDeliveryList()[1]
+        deliveryItem.value = null
+
+        Mockito.`when`(useCase.getDelivery("WRONG_ID"))
+            .thenReturn(getDeliveryItem())
+
+        Assert.assertNull(deliveryItem.value)
     }
 }
 

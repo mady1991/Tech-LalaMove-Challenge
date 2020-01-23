@@ -6,23 +6,19 @@ import java.text.DecimalFormat
 
 object AppUtil {
 
-    
+    const val DATABASE_PAGE_SIZE = 20
+
     @JvmStatic
-    fun addBothCharges(s: String, deliveryFee: String): String? {
-        return  upToTwoPonit(convertStringToDouble(s) + convertStringToDouble(deliveryFee))
+    fun addBothCharges(surcharge: String, deliveryFee: String): String? {
+        return String.format(
+            "$%.2f",
+            convertStringToBigDecimal(surcharge) + convertStringToBigDecimal(deliveryFee)
+        )
     }
 
-    fun convertStringToDouble(str: String): Double {
+    fun convertStringToBigDecimal(str: String?): BigDecimal {
+        return if (str?.contains("$") == true)
+            str.replace("$", "").toBigDecimal() else 0.0.toBigDecimal()
 
-        return if (!str.isNullOrEmpty() && str.contains("$")) str.replace(
-            "$",
-            ""
-        ).toDouble() else 0.0
-
-
-    }
-
-    fun upToTwoPonit(str: Double): String {
-        return String.format("$%.2f", str)
     }
 }

@@ -14,7 +14,7 @@ interface LocalData {
     fun getBoundaryState(): LiveData<BoundaryState<Int>>
     fun insertDeliveries(deliveryList: List<DeliveryItem>)
     fun refresh()
-
+    fun retry()
     fun getDelivery(id: String): LiveData<DeliveryItem>
 
     fun updateDelivery(status: Boolean, id: String)

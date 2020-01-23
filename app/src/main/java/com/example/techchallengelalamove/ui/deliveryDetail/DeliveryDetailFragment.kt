@@ -9,8 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.techchallengelalamove.R
 import com.example.techchallengelalamove.DeliveryApp
+import com.example.techchallengelalamove.R
 import com.example.techchallengelalamove.databinding.DetailLayoutBinding
 import com.example.techchallengelalamove.ui.MainActivity
 import com.example.techchallengelalamove.ui.factory.ViewModelFactory
@@ -24,7 +24,8 @@ class DeliveryDetailFragment : Fragment() {
     lateinit var detailLayoutBinding: DetailLayoutBinding
 
     override fun onAttach(context: Context) {
-        DeliveryApp.instance.getApplicationComponent().plusFragmentComponent().inject(this)
+        (activity?.application as DeliveryApp).getApplicationComponent().plusFragmentComponent()
+            .inject(this)
         super.onAttach(context)
     }
 
@@ -63,8 +64,8 @@ class DeliveryDetailFragment : Fragment() {
         val params = DeliveryDetailFragmentArgs.fromBundle(arguments)
         deliveryDetailViewModel.setDeliveryId(params.deliveyId)
 
-        detailLayoutBinding?.favoriteImageView.setOnClickListener { v: View? ->
-            val status = v!!.tag as Boolean
+        detailLayoutBinding?.favouriteView.setOnClickListener { v: View? ->
+            val status = v?.tag as Boolean
             if (status) {
                 deliveryDetailViewModel.updateDelivery(status = false)
             } else {

@@ -7,7 +7,6 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.techchallengelalamove.R
-import com.example.techchallengelalamove.utils.extension.getParentActivity
 
 
 @BindingAdapter("mutableText")
@@ -19,10 +18,10 @@ fun setMutableText(view: TextView, text: String?) {
 }
 
 @BindingAdapter(value = ["surChargeFee", "deliveryFee"], requireAll = true)
-fun setMutableTextFee(view: TextView, text: String?, text1: String?) {
+fun setMutableTextFee(view: TextView, surcharge: String?, deliveryFee: String?) {
     val parentActivity: AppCompatActivity? = view.getParentActivity()
-    if (parentActivity != null && text != null && text1 != null) {
-        view.text = AppUtil.addBothCharges(text, text1)
+    if (parentActivity != null && surcharge != null && deliveryFee != null) {
+        view.text = AppUtil.addBothCharges(surcharge, deliveryFee)
     }
 }
 

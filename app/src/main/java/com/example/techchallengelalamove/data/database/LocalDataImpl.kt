@@ -1,11 +1,13 @@
 package com.example.techchallengelalamove.data.database
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.example.techchallengelalamove.data.database.entity.DeliveryItem
 import com.example.techchallengelalamove.data.repository.LocalData
 import com.example.techchallengelalamove.domain.vo.BoundaryState
+import com.example.techchallengelalamove.utils.AppUtil.DATABASE_PAGE_SIZE
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -20,7 +22,7 @@ class LocalDataImpl @Inject constructor(
         val dataSourceFactory = deliveryDao.getDataSourcefactory()
         return LivePagedListBuilder(
             dataSourceFactory,
-            DeliveryBoundaryCallback.DATABASE_PAGE_SIZE
+            DATABASE_PAGE_SIZE
         ).setBoundaryCallback(boundaryCallback).build()
     }
 
@@ -37,6 +39,10 @@ class LocalDataImpl @Inject constructor(
 
     override fun refresh() {
         boundaryCallback.refresh()
+    }
+
+    override fun retry() {
+        boundaryCallback.boundaryState.value?.itemData?.let { boundaryCallback.retry(it) }
     }
 
     override fun getDelivery(id: String): LiveData<DeliveryItem> {

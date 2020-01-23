@@ -1,4 +1,4 @@
-package com.example.techchallengelalamove.domain.deliveryDetail
+package com.example.techchallengelalamove.domain.deliveryDetail.usecases
 
 import androidx.lifecycle.LiveData
 import com.example.techchallengelalamove.data.database.entity.DeliveryItem

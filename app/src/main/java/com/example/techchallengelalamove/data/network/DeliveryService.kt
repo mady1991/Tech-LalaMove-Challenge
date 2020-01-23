@@ -7,14 +7,11 @@ import retrofit2.http.Query
 
 interface DeliveryService {
 
-    companion object {
-        const val ENDPOINT = "https://mock-api-mobile.dev.lalamove.com/"
-    }
 
     @GET("v2/deliveries")
     fun getDeliveries(
-        @Query("offset") offset: Int? = null,
-        @Query("limit") limit: Int? = null
+        @Query("offset") offset: Int,
+        @Query("limit") limit: Int
     ): Call<List<DeliveryItem>>
 
 }

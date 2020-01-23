@@ -5,17 +5,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.techchallengelalamove.data.database.entity.DeliveryItem
-import com.example.techchallengelalamove.domain.deliveryDetail.DeliveryDetailUseCase
+import com.example.techchallengelalamove.domain.deliveryDetail.GetDetailUseCaseImpl
+import com.example.techchallengelalamove.domain.deliveryDetail.UpdateDetailUseCaseImpl
 import javax.inject.Inject
 
-class DeliveryDetailViewModel @Inject constructor(private val deliveryDetailUseCase: DeliveryDetailUseCase) :
+class DeliveryDetailViewModel @Inject constructor(
+    private val deliveryDetailUseCaseImpl: GetDetailUseCaseImpl,
+    private val updateDetailUseCaseImpl: UpdateDetailUseCaseImpl
+) :
     ViewModel() {
 
     private val deliveryID = MutableLiveData<String>()
 
     var deliveryDetail: LiveData<DeliveryItem> = Transformations
         .switchMap(deliveryID) { id ->
-            deliveryDetailUseCase.getDelivery(id)
+            deliveryDetailUseCaseImpl.getDelivery(id)
         }
 
     fun setDeliveryId(id: String) {
@@ -28,7 +32,7 @@ class DeliveryDetailViewModel @Inject constructor(private val deliveryDetailUseC
     }
 
     fun updateDelivery(status: Boolean) {
-        deliveryDetailUseCase.updateDelivery(status, deliveryID.value!!)
+        updateDetailUseCaseImpl.updateDelivery(status, deliveryID.value!!)
     }
 
 }

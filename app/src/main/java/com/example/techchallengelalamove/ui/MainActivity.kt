@@ -11,12 +11,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+        setHomeAsEnable(false)
+    }
+
+    private fun setHomeAsEnable(enable: Boolean) {
+        supportActionBar?.setDisplayHomeAsUpEnabled(enable)
+        setSupportActionBar(toolbar)
     }
 
     fun setActionBarTitle(title: String?, backEnable: Boolean) {
         toolbar!!.title = title
-        supportActionBar?.setDisplayHomeAsUpEnabled(backEnable)
-        setSupportActionBar(toolbar)
+        setHomeAsEnable(backEnable)
     }
 
     override fun onSupportNavigateUp(): Boolean {
