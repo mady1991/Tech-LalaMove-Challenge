@@ -33,13 +33,17 @@ Libraries Used
   persistence.
   * [Data Binding][11] - Declaratively bind observable data to UI elements.
   * [LiveData][13] - Build data objects that notify views when the underlying database changes.
+  * [Navigation][94] - For set up and work with the Navigation component
+  * [Dagger][96] - Automate dependency injection in your app & you don't have to write tedious & error-prone boilerplate code.
+  * [Pagination][95] - For easier to load data gradually and gracefully within your app's RecyclerView.
   * [ViewModel][17] - Store UI-related data that isn't destroyed on app rotations. Easily schedule
      asynchronous tasks for optimal execution.
 * [UI][30] - Details on why and how to use UI Components in your apps - together or separate
   * [Layout][35] - Lay out widgets using different algorithms.
 * Third party
-  * [Kotlin Coroutines][91] for managing background threads with simplified code and reducing needs for callbacks
+  * [RXJava][91] for managing background threads with simplified code and reducing needs for callbacks
   * [Retrofit2][92] for client and server intreaction and callback
+  * [Glide][93] for fetching images from server
   
 [0]: https://developer.android.com/jetpack/components
 [1]: https://developer.android.com/topic/libraries/support-library/packages#v7-appcompat
@@ -51,5 +55,9 @@ Libraries Used
 [17]: https://developer.android.com/topic/libraries/architecture/viewmodel
 [30]: https://developer.android.com/guide/topics/ui
 [35]: https://developer.android.com/guide/topics/ui/declaring-layout
-[91]: https://kotlinlang.org/docs/reference/coroutines-overview.html
+[91]: http://reactivex.io/intro.html
 [92]: https://square.github.io/retrofit/#introduction
+[93]: https://bumptech.github.io/glide/
+[94]: https://developer.android.com/guide/navigation/navigation-getting-started
+[95]: https://developer.android.com/jetpack/androidx/releases/paging
+[96]: https://developer.android.com/training/dependency-injection/dagger-android
