@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">技術挑戰LalaMove</string>
+    <string name="my_deliveries">我的送貨</string>
+    <string name="delivery_detail">交貨細節</string>
+    <string name="retry">重試</string>
+    <string name="delivery_error">加載帖子時發生錯誤</string>
+
+    <string name="error_no_data">服務器未返回任何數據。請再試一遍</string>
+    <string name="error_network">提取數據時出錯。 %1$s</string>
+    <string name="error_unknown">未知錯誤。 %1$s</string>
+    <string name="page_load_completed">沒有要加載的項目</string>
+    <string name="from">從</string>
+    <string name="to">至</string>
+    <string name="delivery_fee">送貨費</string>
+    <string name="add_to_favorite">加入我的最愛</string>
+    <string name="content_description_item_imageview">顯示交貨圖片</string>
+    <string name="content_description_detail_imageview">顯示詳細的交貨圖像</string>
+    <string name="content_description_item_favourite_imageview">顯示喜歡的狀態</string>
+    <string name="content_description_detail_favourite_imageview">啟用收藏夾狀態</string>
+    <string name="from_text">從：</string>
+    <string name="item_to_text">至：&#160;&#160;&#160;&#160;&#160;</string>
+    <string name="no_internet_connection">沒有網絡連接</string>
+</resources>
