@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.techchallengelalamove.data.database.entity.DeliveryItem
+import com.example.techchallengelalamove.domain.deliveryDetail.usecases.GetDetailUseCase
 import com.example.techchallengelalamove.domain.deliveryDetail.utils.TestDataGenerator
 import org.junit.Before
 import org.junit.Rule
@@ -16,12 +17,12 @@ import org.mockito.MockitoAnnotations
 
 
 @RunWith(JUnit4::class)
-class DeliveryDetailUseCaseTest {
+class DeliveryDetailUseCaseImplTest {
 
-    private lateinit var deliveryDetailUseCase: DeliveryDetailUseCase
+    private lateinit var deliveryDetailUseCaseImpl: GetDetailUseCaseImpl
 
     @Mock
-    private lateinit var repository: DeliveryDetailRepository
+    private lateinit var useCase: GetDetailUseCase
 
 
     @get:Rule // -> allows liveData to work on different thread besides main, must be public!
@@ -33,7 +34,7 @@ class DeliveryDetailUseCaseTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        deliveryDetailUseCase = DeliveryDetailUseCase(repository)
+        deliveryDetailUseCaseImpl = GetDetailUseCaseImpl(useCase)
 
     }
 
@@ -48,7 +49,7 @@ class DeliveryDetailUseCaseTest {
         deliveryItem.value = delivery
         val id = delivery.id
 
-        Mockito.`when`(repository.getDelivery(id))
+        Mockito.`when`(useCase.getDelivery(id))
             .thenReturn(getDeliveryItem())
 
         assert(deliveryItem.value != null)

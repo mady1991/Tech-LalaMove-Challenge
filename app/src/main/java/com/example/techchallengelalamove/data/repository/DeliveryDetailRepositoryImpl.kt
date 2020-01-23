@@ -2,13 +2,15 @@ package com.example.techchallengelalamove.data.repository
 
 import androidx.lifecycle.LiveData
 import com.example.techchallengelalamove.data.database.entity.DeliveryItem
-import com.example.techchallengelalamove.domain.deliveryDetail.DeliveryDetailRepository
+import com.example.techchallengelalamove.domain.deliveryDetail.DeliveryDetailUseCase
+import com.example.techchallengelalamove.domain.deliveryDetail.UpdateDetailUseCase
 import javax.inject.Inject
 
 
-class DeliveryDetailRepositoryImpl @Inject constructor(
+class DeliveryDetailUseCaseImpl @Inject constructor(
     private val localData: LocalData
-) : DeliveryDetailRepository {
+) : DeliveryDetailUseCase, UpdateDetailUseCase {
+
     override fun getDelivery(id: String): LiveData<DeliveryItem> {
         return localData.getDelivery(id)
     }
