@@ -41,7 +41,7 @@ Libraries Used
 * [UI][30] - Details on why and how to use UI Components in your apps - together or separate
   * [Layout][35] - Lay out widgets using different algorithms.
 * Third party
-  * [RXJava][91] for managing background threads with simplified code and reducing needs for callbacks
+  * [Rx Java][91] for managing background threads with simplified code and reducing needs for callbacks
   * [Retrofit2][92] for client and server intreaction and callback
   * [Glide][93] for fetching images from server
   
